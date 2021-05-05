@@ -8,7 +8,7 @@ Create two directories called `[custom]-worker` and `[custom]-nginx` in the `bui
 
 ```shell
 cd frappe_docker
-mkdir ./build/[custom]-worker ./build/[custom]-nginx
+mkdir ./build/tokhna-worker ./build/tokhna-nginx
 ```
 
 Create a `Dockerfile` in `./build/[custom]-worker` with the following content:
