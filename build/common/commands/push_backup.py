@@ -74,21 +74,23 @@ def delete_old_backups(limit, bucket, site_name):
         for obj in objects.get('CommonPrefixes'):
             if obj.get('Prefix') == bucket_dir + '/':
                 for backup_obj in bucket.objects.filter(Prefix=obj.get('Prefix')):
-                    if backup_obj.get()["ContentType"] == "application/x-directory":
-                        continue
+                    # backup_obj.key is bucket_dir/site/date_time/backupfile.extension
                     try:
-                        # backup_obj.key is bucket_dir/site/date_time/backupfile.extension
                         bucket_dir, site_slug, date_time, backupfile = backup_obj.key.split('/')
-                        date_time_object = datetime.datetime.strptime(
-                            date_time, DATE_FORMAT
-                        )
+                    except ValueError:
+                        continue
+                    
+                    date_time_object = datetime.datetime.strptime(
+                        date_time, DATE_FORMAT
+                    )
 
-                        if site_name in backup_obj.key:
+                    if site_name in backup_obj.key:
+                        try:
                             all_backup_dates.append(date_time_object)
                             all_backups.append(backup_obj.key)
-                    except IndexError as error:
-                        print(error)
-                        exit(1)
+                        except IndexError as error:
+                            print(error)
+                            exit(1)
 
     if len(all_backup_dates) > 0:
         oldest_backup_date = min(all_backup_dates)
