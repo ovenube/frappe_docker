@@ -1,10 +1,12 @@
 FROM bitnami/node:12-prod
 
-COPY build/[custom]-nginx/install_app.sh /install_app
+COPY build/tokhna-nginx/install_app.sh /install_app
 
-RUN /install_app tokhna_peru https://github.com/Tokhna/tokhna_peru version-12
+ARG GIT_BRANCH=version-12
+RUN /install_app tokhna_peru https://github.com/Tokhna/tokhna_peru ${GIT_BRANCH} skipcache
 
-FROM frappe/erpnext-nginx:v12
+ARG GIT_BRANCH
+FROM tokhna/erpnext-nginx:version-12
 
 COPY --from=0 /home/frappe/frappe-bench/sites/ /var/www/html/
 COPY --from=0 /rsync /rsync
