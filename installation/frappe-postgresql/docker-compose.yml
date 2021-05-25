@@ -30,7 +30,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   frappe-nginx:
-    image: frappe/frappe-nginx:${FRAPPE_VERSION}
+    image: ovenube/frappe-nginx:${FRAPPE_VERSION}
     restart: on-failure
     environment:
       - FRAPPE_PY=frappe-python
@@ -48,7 +48,7 @@ services:
       - assets-vol:/assets:rw
 
   frappe-python:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: on-failure
     environment:
       - POSTGRES_HOST=${POSTGRES_HOST}
@@ -71,7 +71,7 @@ services:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
   frappe-worker-default:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: on-failure
     command: worker
     depends_on:
@@ -81,7 +81,7 @@ services:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
   frappe-worker-short:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: on-failure
     command: worker
     environment:
@@ -93,7 +93,7 @@ services:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
   frappe-worker-long:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: on-failure
     command: worker
     environment:
@@ -105,7 +105,7 @@ services:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
   frappe-schedule:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: on-failure
     command: schedule
     depends_on:
@@ -141,7 +141,7 @@ services:
       - postgresql-vol:/var/lib/postgresql/data
 
   site-creator:
-    image: frappe/frappe-worker:${FRAPPE_VERSION}
+    image: ovenube/frappe-worker:${FRAPPE_VERSION}
     restart: "no"
     command: new
     depends_on:

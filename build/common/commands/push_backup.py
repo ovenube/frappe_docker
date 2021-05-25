@@ -77,7 +77,7 @@ def delete_old_backups(limit, bucket, site_name):
                     # backup_obj.key is bucket_dir/site/date_time/backupfile.extension
                     try:
                         bucket_dir, site_slug, date_time, backupfile = backup_obj.key.split('/')
-                    except ValueError:
+                    except:
                         continue
                     
                     date_time_object = datetime.datetime.strptime(

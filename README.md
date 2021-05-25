@@ -23,7 +23,7 @@ For Docker basics and best practices. Refer Docker [documentation](http://docs.d
 Clone this repository somewhere in your system:
 
 ```sh
-git clone https://github.com/frappe/frappe_docker.git
+git clone https://github.com/ovenube/frappe_docker.git
 cd frappe_docker
 ```
 
@@ -58,6 +58,6 @@ It takes care of complete setup to develop with Frappe/ERPNext and Bench, Includ
 ## Contributing
 
 - [Frappe Docker Images](CONTRIBUTING.md)
-- [Frappe Framework](https://github.com/frappe/frappe#contributing)
-- [ERPNext](https://github.com/frappe/erpnext#contributing)
-- [frappe/bench](https://github.com/frappe/bench)
+- [Frappe Framework](https://github.com/ovenube/frappe#contributing)
+- [ERPNext](https://github.com/ovenube/erpnext#contributing)
+- [frappe/bench](https://github.com/ovenube/bench)

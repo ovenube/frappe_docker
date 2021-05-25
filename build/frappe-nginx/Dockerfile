@@ -23,7 +23,7 @@ RUN install_packages git
 ARG GIT_BRANCH=develop
 RUN mkdir -p apps sites/assets/css  \
     && cd apps \
-    && git clone --depth 1 https://github.com/frappe/frappe --branch $GIT_BRANCH
+    && git clone --depth 1 https://github.com/ovenube/frappe --branch $GIT_BRANCH
 
 RUN cd /home/frappe/frappe-bench/apps/frappe \
     && yarn \

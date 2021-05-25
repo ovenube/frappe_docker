@@ -34,7 +34,7 @@ docker run \
 #### PostgreSQL Site
 
 PostgreSQL is only available v12 onwards. It is NOT available for ERPNext.
-It is available as part of `frappe/erpnext-worker`. It inherits from `frappe/frappe-worker`.
+It is available as part of `frappe/erpnext-worker`. It inherits from `ovenube/frappe-worker`.
 
 ```sh
 # Create ERPNext site
@@ -123,7 +123,7 @@ Environment Variables
     -e "BUCKET_DIR=frappe-bench" \
     -v <project-name>_sites-vol:/home/frappe/frappe-bench/sites \
     --network <project-name>_default \
-    frappe/frappe-worker:$VERSION push-backup
+    ovenube/frappe-worker:$VERSION push-backup
 ```
 
 Note:
@@ -157,7 +157,7 @@ docker run \
     -v <project-name>_sites-vol:/home/frappe/frappe-bench/sites \
     -v ./backups:/home/frappe/backups \
     --network <project-name>_default \
-    frappe/frappe-worker:$VERSION restore-backup
+    ovenube/frappe-worker:$VERSION restore-backup
 ```
 
 Note:
@@ -177,7 +177,7 @@ Note:
 
 Editing config manually might be required in some cases,
 one such case is to use Amazon RDS (or any other DBaaS).
-For full instructions, refer to the [wiki](https://github.com/frappe/frappe/wiki/Using-Frappe-with-Amazon-RDS-(or-any-other-DBaaS)). Common question can be found in Issues and on forum.
+For full instructions, refer to the [wiki](https://github.com/ovenube/frappe/wiki/Using-Frappe-with-Amazon-RDS-(or-any-other-DBaaS)). Common question can be found in Issues and on forum.
 
 `common_site_config.json` or `site_config.json` from `sites-vol` volume has to be edited using following command:
 
@@ -213,7 +213,7 @@ To execute commands using bench helper.
     -v <project-name>_sites-vol:/home/frappe/frappe-bench/sites \
     --network <project-name>_default \
     --user frappe \
-    frappe/frappe-worker:$VERSION bench --help
+    ovenube/frappe-worker:$VERSION bench --help
 ```
 
 Example command to clear cache
@@ -223,7 +223,7 @@ Example command to clear cache
     -v <project-name>_sites-vol:/home/frappe/frappe-bench/sites \
     --network <project-name>_default \
     --user frappe \
-    frappe/frappe-worker:$VERSION bench --site erp.mysite.com clear-cache
+    ovenube/frappe-worker:$VERSION bench --site erp.mysite.com clear-cache
 ```
 
 Notes:

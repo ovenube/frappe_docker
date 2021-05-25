@@ -119,7 +119,7 @@ def pull_backup_from_s3():
         try:
             backup_file = obj.key.replace(os.path.join(bucket_dir, ''), '')
             site_name, timestamp, backup_type = backup_file.split('/')
-        except ValueError:
+        except:
             continue
         backup_files.append(backup_file)
         site_timestamp = site_name + '/' + timestamp

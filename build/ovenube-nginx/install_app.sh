@@ -14,8 +14,8 @@ install_packages git python2
 
 mkdir -p apps
 cd apps
-git clone --depth 1 https://github.com/frappe/frappe ${BRANCH}
-git clone --depth 1 ${APP_REPO} ${BRANCH} ${APP_NAME}
+git clone --depth 1 https://github.com/ovenube/frappe ${BRANCH}
+git clone --depth 1 ${VERSION} ${BRANCH} ${APP_NAME}
 
 cd /home/frappe/frappe-bench/apps/frappe
 yarn
